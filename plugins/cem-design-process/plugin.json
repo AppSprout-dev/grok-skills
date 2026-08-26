@@ -1,0 +1,19 @@
+{
+  "name": "cem-design-process",
+  "version": "1.0.0",
+  "description": "Disciplined process for designing a Computational Engineering Model. Foundational DNA first, module negotiation, clean-room rules, PRD and epic structure, deep research before code.",
+  "author": {
+    "name": "AppSprout",
+    "email": "plugin@appsprout.dev"
+  },
+  "homepage": "https://github.com/AppSprout-dev/grok-skills",
+  "repository": "https://github.com/AppSprout-dev/grok-skills",
+  "license": "MIT",
+  "keywords": [
+    "cem",
+    "computational-engineering",
+    "design-process",
+    "noyron",
+    "architecture"
+  ]
+}

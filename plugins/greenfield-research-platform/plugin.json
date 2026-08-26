@@ -1,0 +1,19 @@
+{
+  "name": "greenfield-research-platform",
+  "version": "1.0.0",
+  "description": "Stand up a greenfield computational research platform on Grok Build. Campaign host plus specialist arm workers, two-process split, MCP tool surface, Challenge 0 closed loop.",
+  "author": {
+    "name": "AppSprout",
+    "email": "plugin@appsprout.dev"
+  },
+  "homepage": "https://github.com/AppSprout-dev/grok-skills",
+  "repository": "https://github.com/AppSprout-dev/grok-skills",
+  "license": "MIT",
+  "keywords": [
+    "grok-build",
+    "research-platform",
+    "multi-agent",
+    "mcp",
+    "greenfield"
+  ]
+}

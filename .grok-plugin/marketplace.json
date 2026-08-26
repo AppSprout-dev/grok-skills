@@ -1,0 +1,32 @@
+{
+  "name": "AppSprout Grok Skills",
+  "description": "Process skills for computational engineering models and greenfield research platforms.",
+  "owner": {
+    "name": "AppSprout",
+    "email": "plugin@appsprout.dev"
+  },
+  "plugins": [
+    {
+      "name": "cem-design-process",
+      "description": "Disciplined process for designing a Computational Engineering Model. Foundational DNA first, module negotiation, clean-room rules, PRD and epic structure, deep research before code.",
+      "category": "development",
+      "source": {
+        "type": "local",
+        "path": "./plugins/cem-design-process"
+      },
+      "homepage": "https://github.com/AppSprout-dev/grok-skills",
+      "keywords": ["cem", "computational-engineering", "design-process", "noyron"]
+    },
+    {
+      "name": "greenfield-research-platform",
+      "description": "Stand up a greenfield computational research platform on Grok Build. Campaign host plus specialist arm workers, two-process split, MCP tool surface, Challenge 0 closed loop.",
+      "category": "development",
+      "source": {
+        "type": "local",
+        "path": "./plugins/greenfield-research-platform"
+      },
+      "homepage": "https://github.com/AppSprout-dev/grok-skills",
+      "keywords": ["grok-build", "research-platform", "multi-agent", "mcp", "greenfield"]
+    }
+  ]
+}

@@ -1,6 +1,10 @@
 # AppSprout Grok Skills
 
+**v1.0.0** · MIT · [Releases](https://github.com/AppSprout-dev/grok-skills/releases)
+
 Process skills for [Grok Build](https://x.ai/build) and Grok chat. This repository is a small marketplace: two reusable methods, no project-private context.
+
+Topics: `grok` · `grok-build` · `skills` · `plugins` · `marketplace` · `computational-engineering` · `multi-agent` · `mcp`
 
 | Plugin | Use when |
 |---|---|
@@ -9,12 +13,25 @@ Process skills for [Grok Build](https://x.ai/build) and Grok chat. This reposito
 
 These are **process** skills. They do not ship product code, locked repo decisions, commercial paths, or lab protocols.
 
-Companion public work: the Claude Code plugin [jkbennitt/yield-framework](https://github.com/jkbennitt/yield-framework).
+Companion public work:
+
+- Claude Code plugin: [AppSprout-dev/yield-framework](https://github.com/AppSprout-dev/yield-framework) (fork of [jkbennitt/yield-framework](https://github.com/jkbennitt/yield-framework))
 
 ## Install in Grok Build
 
+Latest:
+
 ```bash
 grok plugin marketplace add AppSprout-dev/grok-skills
+grok plugin install cem-design-process --trust
+grok plugin install greenfield-research-platform --trust
+```
+
+Pinned to v1.0.0:
+
+```bash
+grok plugin marketplace add AppSprout-dev/grok-skills
+# after add, pin the marketplace source to tag v1.0.0 / SHA of that release
 grok plugin install cem-design-process --trust
 grok plugin install greenfield-research-platform --trust
 ```

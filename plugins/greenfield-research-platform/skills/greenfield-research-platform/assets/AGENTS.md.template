@@ -1,0 +1,37 @@
+# {Platform}
+
+{Challenge 0 one-liner}. PRD: `docs/PRD.md`. Architecture: `docs/ARCHITECTURE.md`.
+
+## Two processes
+
+**This coding session** builds the repo (language stack, schema, MCP, tests). It does not generate the Challenge 0 shortlist. Do not call `propose_batch` / `score_batch` / `store_candidates` here as the product path. Tests are allowed.
+
+**Research** is a separate Grok process:
+
+```bash
+grok --agent {name}-campaign
+```
+
+`{name}-research` is the arm worker the host spawns. Paste is optional; Kickoff in `.grok/skills/{challenge}-cycle/SKILL.md` is already in force. Set `/effort high`. Do not use `grok -p "...one cycle"` for the campaign.
+
+That process calls project MCP tools. Arm workers must not edit this repo.
+
+### Branch hygiene
+
+`main` is the frozen two-process split. Feature work happens on focused branches off `main`.
+
+The **campaign host** may run the wrap-docs CLI after each ARM REPORT. It must not edit product code / schema / tests, must not `git commit` / `git push`, and must not spawn coding / explore / plan. `{name}-research` workers have write and shell disallowed. Coding TUI still owns scorer / MCP / schema.
+
+After pulling MCP or tool-surface changes, quit the research Grok process and start a new `grok --agent {name}-campaign`. `grok mcp disable/enable` only writes config; `/new` keeps the old in-memory server.
+
+## Stack
+
+- Grok (`{name}-campaign` host + `{name}-research` arms) owns hypothesis, strategy, burst size, reflection.
+- The tools module is the tool contract. MCP wraps it 1:1. No loop inside the server.
+- Domain compute (validators, estimators, scorer, local encoders) stays on-box.
+- `propose_batch` is a deterministic operator, not the orchestrator.
+- Do not add `run_cycle`, a Python agent, or a CLI that re-implements Design–Score–Analyze.
+- Encoders are embeddings / retrieval. Overlay heads stay on an allow-list. Estimators stay labeled as estimates.
+- Campaign memory is structured state rows plus a short `next_hypothesis`, not a prose forbid wall.
+- Recursive adjustment is the campaign host spawning arm workers that report back after a burst, then the host merges state and sends the next burst (`resume_from`). Workers do not spawn and do not loop forever.
+- Experimental modules are logged human protocols plus ingest stubs. The empirical flag stays false until the documented measured gate.

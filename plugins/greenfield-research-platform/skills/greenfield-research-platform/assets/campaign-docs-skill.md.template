@@ -1,0 +1,24 @@
+---
+name: campaign-docs
+description: After a Challenge 0 campaign wrap, update kickoff, shortlist, and structured-state docs from the store of record. Coding TUI or campaign host only. Do not propose, score, or store.
+---
+
+# Campaign docs
+
+Use after each ARM REPORT merge and on operator wrap. Do **not** call `propose_batch` / `score_batch` / `store_candidates`.
+
+Shipped entry point:
+
+```bash
+{runner} python -m {name}.learn wrap
+{runner} python -m {name}.learn wrap-docs
+```
+
+`wrap` prints the snapshot JSON. `wrap-docs` promotes computationally ultra-verified rows (never the empirical flag), then writes Kickoff markers, upserts the live shortlist, retargets host default arms, and stores `data/campaign/learnings.json`.
+
+## Rules
+
+- Ignore persist-test memory.
+- Do not invent candidates; exemplars come from the snapshot.
+- The empirical flag stays false. Computational promotion is a hand-off, not a measured result.
+- Do not tag `main` from here.

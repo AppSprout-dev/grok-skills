@@ -1,0 +1,8 @@
+# Project MCP for the research Grok process.
+# Coding Grok in this repo is not the Challenge 0 generator.
+
+[mcp_servers.{name}]
+command = "uv"
+args = ["run", "--directory", "python", "-m", "{name}.mcp"]
+env = { PLATFORM_DSN = "${PLATFORM_DSN}" }
+enabled = true

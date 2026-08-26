@@ -1,0 +1,79 @@
+---
+name: {challenge}-cycle
+description: Run Challenge 0 cycles via project MCP on a long horizon. Use when generating, scoring, storing, or reflecting on candidates.
+---
+
+# {Challenge} cycle
+
+You are in the **research** Grok process. Tools are project MCP. **Workers** (`{name}-research` arms) do not edit the repo. **Host** (`{name}-campaign`) writes only via the wrap-docs CLI after each merge / operator wrap.
+
+Requires the project DSN on the MCP server and the store up (an operator job, not yours).
+
+After a `git pull` that changes the tool surface: **quit the research Grok process** and start a new `grok --agent {name}-campaign`. `grok mcp disable/enable` only writes config. `/new` keeps the old in-memory server.
+
+## Kickoff (in force when `{name}-campaign` starts)
+
+On a **new** campaign session, start this loop on the first turn — do not wait for a paste. Set **`/effort high`**.
+
+```
+<!-- campaign-kickoff:begin -->
+Continue Challenge 0. You are the campaign host. Effort is /effort high. You talk to me.
+First tool: retrieve_campaign_wrap. If stop_search is true, print the selected set and do not spawn. Otherwise spawn from next_arms.
+The empirical flag stays false.
+<!-- campaign-kickoff:end -->
+```
+
+## Orchestrator (Grok-bot pattern)
+
+The **host** is the operator-facing session. Arm workers are `{name}-research` subagents.
+
+Host:
+
+1. Sequential MCP reads (never parallel schema tools). After memory tools, `retrieve_campaign_wrap`. On session start, run wrap-docs once. If stop is true, print the selected set and do not spawn.
+2. Spawn 2–3 workers in **one turn**, `background=true`, `isolation=none`. Prompt each with the Child burst block plus current structured-state keys and 1–3 seeds.
+3. Stay the conversation. When a worker **finishes**, its ARM REPORT is your next turn.
+4. Refresh structured state. Write `update_memory` for the **campaign** (short). Brief the operator in a few lines.
+5. Run wrap-docs so Kickoff / shortlist / learnings match the store. Do not edit product code. Do not git commit.
+6. If stop is true, print the selected list and **do not spawn**.
+7. Otherwise immediately `spawn_subagent` with `resume_from=<that child id>` or a new spawn if resume is unavailable. Do not wait for the operator.
+
+Workers do not spawn. Host does not spawn coding/explore/plan. Max three live workers. `resume_from` only after that child has completed.
+
+## Child burst (worker)
+
+You are one arm. Do not spawn. Run the cycle steps at most **8 stored** times this burst, then **stop**. Stop earlier if you freeze or dead_end a cluster, the analogue/child budget collapses, or the last two cycles used the same parent with no new in-window hit.
+
+Then your **entire last message** is:
+
+```
+ARM: <short assignment id>
+CYCLES: <n stored>
+RUN_IDS: <space-separated>
+BEST_IN_WINDOW: <id | key metrics | family_key>
+FAMILY_WRITES: <family_key=frozen|dead_end|keep_open ... or none>
+NEXT: <one-line walk for the next burst>
+STALL: <none | same-seeds | thin-search | metric-miss>
+```
+
+No extra essay. The host cannot hear you until you return.
+
+## Session loop (host recursion)
+
+The long horizon is **host rounds**, not one worker looping until interrupt. Each worker burst is capped. A checkpoint cycle count is **not** search-complete and **not** a lab shopping list.
+
+Stop the campaign when wrap `stop_search` is true, or if MCP is missing, or the operator interrupts.
+
+## Steps per cycle (worker burst)
+
+1. `reflect_on_batch` without a run id (latest), **then** structured-state retrieve, **then** literature retrieve. Do not fire those reads in parallel.
+2. `retrieve_similar` on a current in-window candidate.
+3. Choose strategy and `n`. Pass novel structures as `seeds` so the validator still runs.
+4. `propose_batch` then `score_batch`.
+5. `store_candidates` with `agent_model="{name}-research"`.
+6. `update_memory`. Write primary arm, keep-open arm, hard excludes only. Freeze a finished cluster and rotate.
+
+## Stop
+
+If MCP is missing, stop. Do not fall back to a Python generator CLI.
+
+The campaign stop is wrap `stop_search` (computational promotion of a small, diverse selected set). The empirical flag stays false. The operator interrupt still stops earlier.

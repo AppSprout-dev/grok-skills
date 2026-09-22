@@ -38,6 +38,17 @@
       },
       "homepage": "https://github.com/AppSprout-dev/grok-skills",
       "keywords": ["grok", "mcp", "skills", "pull-request", "exposure-gate"]
+    },
+    {
+      "name": "yield-framework",
+      "description": "Yield Framework process skill — architecture / cleverness-debt review / greenfield compounding (check|audit|new).",
+      "category": "development",
+      "source": {
+        "type": "local",
+        "path": "./plugins/yield-framework"
+      },
+      "homepage": "https://github.com/AppSprout-dev/grok-skills",
+      "keywords": ["yield", "architecture", "bitter-lesson", "compounding", "grok"]
     }
   ]
 }

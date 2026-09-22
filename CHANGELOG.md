@@ -11,6 +11,7 @@
 
 ### Skills
 
+- Add `yield-framework` process skill (check|audit|new) — Grok packaging of AppSprout-dev/yield-framework / jkbennitt/yield-framework. No Claude slash commands or PostToolUse hooks.
 - Template DNA audit (`docs/TEMPLATE_DNA_AUDIT.md`): process skills did not paste DNA or PRD bodies. Added a semantic-manifest pointer so copied harness files stay paths.
 
 ## 1.0.0 — 2026-08-26

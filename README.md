@@ -2,7 +2,7 @@
 
 **v1.0.0** · MIT · [Releases](https://github.com/AppSprout-dev/grok-skills/releases)
 
-Process skills for [Grok Build](https://x.ai/build) and Grok chat. This repository is a small marketplace: two design methods plus an exposure-gate skill, no project-private context.
+Process skills for [Grok Build](https://x.ai/build) and Grok chat. This repository is a small marketplace: three process skills plus an exposure-gate skill, no project-private context.
 
 Topics: `grok` · `grok-build` · `skills` · `plugins` · `marketplace` · `computational-engineering` · `multi-agent` · `mcp`
 
@@ -11,6 +11,7 @@ Topics: `grok` · `grok-build` · `skills` · `plugins` · `marketplace` · `com
 | `cem-design-process` | Starting or restructuring a Computational Engineering Model |
 | `greenfield-research-platform` | Starting or restructuring a greenfield research platform on Grok Build |
 | `paired-tau-gate` | Opening a PR that changes a skill, MCP schema/manifest, or plugin surface |
+| `yield-framework` | Architecture, cleverness-debt review, or greenfield compounding (`check`, `audit`, `new`) |
 
 These are **process** skills. They do not ship product code, locked repo decisions, commercial paths, or lab protocols.
 
@@ -27,6 +28,7 @@ grok plugin marketplace add AppSprout-dev/grok-skills
 grok plugin install cem-design-process --trust
 grok plugin install greenfield-research-platform --trust
 grok plugin install paired-tau-gate --trust
+grok plugin install yield-framework --trust
 ```
 
 Pinned to v1.0.0:
@@ -37,6 +39,7 @@ grok plugin marketplace add AppSprout-dev/grok-skills
 grok plugin install cem-design-process --trust
 grok plugin install greenfield-research-platform --trust
 grok plugin install paired-tau-gate --trust
+grok plugin install yield-framework --trust
 ```
 
 In the TUI: `/marketplace` after the source is added, then install by name.
@@ -49,6 +52,7 @@ Copy a skill folder into `~/.grok/skills/` or a project's `./.grok/skills/`:
 plugins/cem-design-process/skills/cem-design-process/
 plugins/greenfield-research-platform/skills/greenfield-research-platform/
 plugins/paired-tau-gate/skills/paired-tau-gate/
+plugins/yield-framework/skills/yield-framework/
 ```
 
 Grok chat can also install from GitHub with the skill installer by pointing at those paths.

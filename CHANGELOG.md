@@ -4,7 +4,8 @@
 
 ### Policy
 
-- Paired τ gate for skill, MCP, and plugin exposure PRs (`docs/PAIRED_TAU_GATE.md`). PR fields: `level`, `hypothesis`, `dna_touch`, `paired_eval_Δ`.
+- Paired τ gate for skill, MCP, and plugin exposure PRs (`docs/PAIRED_TAU_GATE.md`). Required PR fields: `level`, `hypothesis`, `dna_touch`, `paired_eval_Δ`. Optional: `expected_effect`.
+- Petra C0 harness defaults (harness-admit only, not chemistry τ): primary `turns_to_correct_mcp_use`, Δ = parent − candidate, τ_harness 1.0 turn; honesty pass-fraction Δ ≥ 0.10 on a primary tie. V is TODO at `evals/c0_harness_v/` until the Petra fixture merges.
 - `paired-tau-gate` skill: fill those fields before opening an exposure PR.
 - Reject log path: `docs/gate-rejects/paired-tau.jsonl` (empty until the first refuse).
 

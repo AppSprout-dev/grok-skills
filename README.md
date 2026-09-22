@@ -57,7 +57,7 @@ Start a new session after install so the agent picks the skills up.
 
 ## Fleet policy
 
-Skill, MCP, and plugin exposure PRs use the paired τ gate: `docs/PAIRED_TAU_GATE.md`. τ, the Petra Challenge 0 replay V, and the primary metric are TODO(Petra). This repo does not ship that replay or any CEM DNA.
+Skill, MCP, and plugin exposure PRs use the paired τ gate: `docs/PAIRED_TAU_GATE.md`. Primary metric is `turns_to_correct_mcp_use` (lower better); harness-admit τ_harness is 1.0 turn, or honesty pass-fraction Δ ≥ 0.10 when the primary ties. Those numbers are not chemistry τ. Frozen V is TODO at `evals/c0_harness_v/` on AppSprout-dev/Petra until that fixture merges. This repo does not ship the replay or any CEM DNA.
 
 Harness templates point at project files via `assets/semantic-manifest.md.template`. They do not paste DNA or PRD bodies. Audit: `docs/TEMPLATE_DNA_AUDIT.md`.
 

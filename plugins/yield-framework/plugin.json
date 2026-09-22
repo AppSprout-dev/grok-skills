@@ -1,0 +1,19 @@
+{
+  "name": "yield-framework",
+  "version": "1.0.0",
+  "description": "Yield Framework process skill — architecture / cleverness-debt review / greenfield compounding (check|audit|new).",
+  "author": {
+    "name": "AppSprout",
+    "email": "plugin@appsprout.dev"
+  },
+  "homepage": "https://github.com/AppSprout-dev/grok-skills",
+  "repository": "https://github.com/AppSprout-dev/grok-skills",
+  "license": "MIT",
+  "keywords": [
+    "yield",
+    "architecture",
+    "bitter-lesson",
+    "compounding",
+    "grok"
+  ]
+}

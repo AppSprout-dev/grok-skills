@@ -1,250 +1,124 @@
 ---
-name: yield-framework
-description: Use for architecture, cleverness-debt review, or greenfield compounding. Modes are check, audit, and new. Trigger on yield review, cleverness debt, compounding asset, build versus configure, or a new project architecture.
-metadata:
-  type: workflow
-  version: "1.0.0"
-  author: AppSprout
+name: Yield Framework
+description: >-
+  use this when designing architecture, reviewing code for cleverness debt,
+  planning a greenfield for compounding, or choosing build-vs-configure /
+  clever-vs-simple
 ---
-
 # Yield Framework
 
-Process skill with three modes: `check`, `audit`, and `new`. No Claude slash commands. No PostToolUse hooks. The sections below are the AppSprout-dev/yield-framework texts (principles, then each mode).
+Source (Claude Code plugin): [jkbennitt/yield-framework](https://github.com/jkbennitt/yield-framework) / canonical org copy [AppSprout-dev/yield-framework](https://github.com/AppSprout-dev/yield-framework). Companion Grok packaging lives in [AppSprout-dev/grok-skills](https://github.com/AppSprout-dev/grok-skills).
 
-# Yield Framework Skill
+Philosophy: use first principles to find what compounds, then get out of its way. Synthesizes the Bitter Lesson (general methods that ride compute/data/iteration beat hand-crafted cleverness) with ruthless scope control.
 
-## Description
-The Yield framework helps build software that compounds. It synthesizes the Bitter Lesson (general methods leveraging computation beat hand-crafted cleverness) with first principles thinking (identify what scales, then get out of its way).
+## Modes (pick one)
 
-## When to Activate
-Activate Yield thinking when:
-- Designing new systems or architecture
-- Making build vs. configure decisions
-- Reviewing code for quality
-- Discussing technical debt or refactoring
-- Choosing between "clever" and "simple" solutions
-- Planning iteration/feedback loops
-- Evaluating what to build vs. skip
+| Mode | When | Depth |
+|------|------|-------|
+| **check** | Current file, PR diff, or recent edits | Fast scan; if clean, say so and stop |
+| **audit** | Whole repo / architecture review | Full six-section audit + prioritized plan |
+| **new** | Greenfield or re-architecture | Compounding-first starting architecture |
 
-## The Five Principles
+Do not run all three unless asked. Default to **check** for a narrow ask; **audit** when the user names a project or wants a full pass; **new** when nothing exists yet or they say “architect from scratch.”
 
-1. **Identify the compounding asset**: What gets better with more compute, data, or iteration? Invest there. Everything else is technical debt in disguise.
+## Five principles
 
-2. **Minimize embedded cleverness**: Hand-crafted heuristics, domain-specific optimizations, and "smart" shortcuts encode assumptions that rot. Build systems that learn or that are trivially replaceable.
+1. **Identify the compounding asset** — What gets better with more compute, data, or iteration? Invest there.
+2. **Minimize embedded cleverness** — Hand-crafted heuristics and “smart” shortcuts encode assumptions that rot.
+3. **Build what builds** — Prefer tooling, pipelines, fixtures, and loops over one-off artifacts.
+4. **Optimize for iteration speed** — Search beats planning; shrink cycle time.
+5. **Defer decisions to systems that scale** — Configure or learn when the decision is judgment-under-uncertainty; do not hardcode snapshots of human taste.
 
-3. **Build what builds**: Tooling, pipelines, and iteration loops produce value. Artifacts just consume it. Invest in leverage, not solutions.
+## Hard walls (do not mis-label as cleverness debt)
 
-4. **Optimize for iteration speed, not plan quality**: Search beats planning. The fastest path to a good system is rapid feedback, not upfront design. Reduce cycle time ruthlessly.
+These are intentional leverage in this stack. Flag *rot* or *missing evidence*, not the existence of the pattern:
 
-5. **Defer decisions to systems that scale**: When choosing between encoding human judgment vs. letting a general system figure it out, bias heavily toward the latter. Your judgment is a snapshot. The system keeps learning.
+- **Deterministic domain DNA** — CEM rules-as-code, physics modules, manufacturing constraints, emission contracts. Compounding happens through fixtures, golden paths, and fidelity honesty — not by “learning” the laws of physics in chat.
+- **Proof / law surfaces** — Bend LAWS/PROOF (and paired benches). Comment or fixture gaps are debt; the law body is not.
+- **Typed judgment schemas** — Choice/Score-style gates are triage walls. Schema changes need an explicit schema level plus a paired bench; do not “simplify” them into free-form LLM judgment.
+- **Refuse-overclaim / structural-only public language** — Settlement, FTD, swaps, short interest. Never trade Yield “simplicity” for accusatory or overclaiming wording.
+- **Secrets and credentials in code** — Always critical. Externalize; never “defer” secrets into the repo.
 
-## Cleverness Debt Patterns
-Flag when you see:
-- Magic numbers and hardcoded thresholds
-- Domain-specific heuristics in business logic
-- Deeply nested conditionals (high cyclomatic complexity)
-- Configuration buried in code
-- Repeated patterns that should be abstracted
-- Clever algorithms where simple + scalable would work
-- Hardcoded assumptions about environment, scale, or domain
+When Yield and a sibling skill conflict, the sibling wins for its domain: `cem-design-process`, `bend-laws-and-proof-spike`, `typesafe-ai`, `refuse-overclaim`, `paired-tau-gate` (in grok-skills), `greenfield-research-platform`.
 
-## How to Apply
-When giving advice, bias toward:
-- Configuration over code
-- General over specific
-- Learned over hand-crafted
-- Simple over clever
-- Fast iteration over perfect planning
-- Leverage over artifact
+## Cleverness debt patterns (still flag)
 
-## Output Style
-When applying Yield thinking:
-- Be direct about what compounds and what doesn't
-- Name specific anti-patterns when you see them
-- Suggest the simpler, more general alternative
-- Don't be preachy—one observation, one suggestion
-- Use "⚡ Yield:" prefix for inline observations
+- Magic numbers and undocumented thresholds in product/business logic
+- Domain heuristics that should be config, data, or a general method
+- Deep nesting / high cyclomatic complexity where a table, rules file, or simpler control flow would do
+- Configuration, URLs, environment forks, or feature flags buried in code
+- Repeated near-copy blocks that should be one abstraction
+- Clever algorithms where simple + scalable is enough
+- Hardcoded scale/environment assumptions
 
-# Yield Check
+**Not** automatic debt: named constants with units and provenance; physics coefficients with citations and fixtures; intentional `@unsafe` / proof exceptions that are documented and tested.
 
-Quick cleverness debt scan of the current file or recent changes.
+## Mode recipes
 
-## Instructions
+### check
 
-Perform a fast scan for Yield anti-patterns in the current context. Focus on the file currently being edited or recent changes.
+Scan the named file(s) or diff only.
 
-### Scan For These Patterns
+For each real issue:
 
-**Magic Numbers & Hardcoded Values**
-- Numeric literals without explanation
-- Hardcoded strings that should be config
-- Timeout/retry values without rationale
-- Threshold values buried in logic
-
-**Embedded Heuristics**
-- If/else chains encoding domain knowledge
-- Switch statements with business logic
-- Scoring/weighting calculations
-- Custom sorting/ranking logic
-
-**Complexity Signals**
-- Functions longer than 50 lines
-- Nesting deeper than 3 levels
-- More than 5 parameters
-- Multiple return paths with different logic
-
-**Configuration in Code**
-- URLs, endpoints, hostnames
-- Feature flags as booleans
-- Environment-specific logic
-- Credentials or API keys (critical!)
-
-**Repeated Patterns**
-- Similar code blocks that should be abstracted
-- Copy-paste with minor variations
-- Parallel structures that could be unified
-
-### Output Format
-
-For each issue found:
 ```
-[PATTERN TYPE] filename:line
-Brief description of the issue
-→ Yield recommendation: [what to do instead]
+[PATTERN] path:line
+What assumption it encodes
+→ Replace with: …
 ```
 
-Prioritize by impact. If the code is clean, say so and move on—don't invent problems.
+Prioritize by impact. Invent nothing. If clean: one sentence, then stop.
 
-Keep output concise. This is a quick check, not a full audit.
+### audit
 
-# Yield Audit
+1. **Compounding assets** — What actually compounds; what was meant to and does not; accidental compounding to lean into.
+2. **Cleverness debt inventory** — Patterns above; for each, the aging assumption.
+3. **Leverage vs artifact vs scaffolding** — Tooling/pipelines vs end products vs delete candidates.
+4. **Iteration friction** — Estimated feedback cycle; top 3 blockers; quick wins.
+5. **Hardcoded judgment** — What should move to config, data, or a general system (respect hard walls).
+6. **Scaling ceiling** — What breaks first at ~100× usage/data/compute.
 
-Perform a comprehensive Yield framework analysis on the current project or specified files.
+End with the action plan below.
 
-## Instructions
+### new
 
-Analyze this codebase through the Yield framework lens:
+Ask only what you cannot infer. Then output a starting architecture that:
 
-### 1. Compounding Assets Audit
-Identify what in this system actually gets better with more compute, data, or iteration. Also note what was *intended* to compound but doesn't, and what accidentally compounds that should be leaned into.
-
-### 2. Cleverness Debt Inventory
-Scan for and list:
-- Magic numbers and hardcoded thresholds
-- Domain-specific heuristics and "smart" shortcuts
-- Deeply nested conditionals (cyclomatic complexity > 10)
-- Configuration buried in code instead of externalized
-- Hand-crafted optimizations that encode assumptions
-- Clever algorithms where simple + general would work
-
-For each item found, note: what assumption does it encode, and how might that assumption age?
-
-### 3. Leverage Inventory
-Categorize the codebase into three buckets:
-- **LEVERAGE**: Tooling, pipelines, abstractions that multiply effort
-- **ARTIFACT**: End products that deliver value but don't compound
-- **SCAFFOLDING**: Neither leverage nor artifact—should probably be deleted or replaced
-
-### 4. Iteration Friction Analysis
-Identify:
-- Current feedback cycle time (estimate)
-- Top 3 friction points slowing iteration
-- Quick wins that would dramatically speed up the loop
-
-### 5. Hardcoded Judgment Scan
-Find where human decisions are baked into code that could be:
-- Moved to configuration
-- Made learned/adaptive
-- Replaced with more general solutions
-
-### 6. Scaling Ceiling
-If this system got 100x more usage/data/compute, what breaks first? What would we wish we'd built differently?
-
-## Output Format
-
-Provide a prioritized action plan:
-- **AMPLIFY**: What's working and should be invested in further
-- **DELETE**: What's pure liability and should be removed
-- **REPLACE**: What should be swapped for something more general
-- **DEFER**: What's fine for now but flagged for future leverage
-
-Be specific. Name files, functions, and line numbers where possible.
-
-# Yield New Project
-
-Help architect a new project using Yield framework principles to maximize compounding from day one.
-
-## Instructions
-
-Guide the user through setting up a new project with the Yield framework. Ask them to describe their project, then help them think through:
-
-### 1. What Compounds Here?
-Given this domain, what aspects of the system will get better with more compute, data, or iteration? These are the core investments.
-
-Examples to probe:
-- Data that improves predictions over time
-- User behavior that trains recommendations
-- Content that builds SEO/discovery
-- Tooling that accelerates future development
-
-### 2. What's the Substrate?
-What tooling, pipelines, or infrastructure will produce the most leverage? What should be built that builds other things?
-
-Help them identify:
-- CI/CD and deployment automation
-- Testing infrastructure
-- Data pipelines
-- Developer experience tooling
-- Abstraction layers that will be used repeatedly
-
-### 3. Cleverness Traps
-Identify the likely traps—places they'll be tempted to hand-craft heuristics or encode domain knowledge that will rot.
-
-Common traps:
-- Custom scoring/ranking algorithms
-- Hardcoded business rules
-- Domain-specific optimizations
-- "Smart" caching strategies
-- Hand-tuned thresholds
-
-### 4. Minimum Viable Iteration Loop
-What's the fastest possible feedback cycle they can establish on day one? What would make iteration 10x faster than the obvious approach?
-
-Consider:
-- Hot reload / instant preview
-- Automated testing on save
-- Feature flags for instant rollback
-- Synthetic data for development
-- Local-first architecture
-
-### 5. Deferred Decisions
-What choices can be pushed to runtime, configuration, or learned systems instead of hardcoding now?
-
-Examples:
-- Thresholds and weights → config files
-- Feature toggles → feature flag service
-- Business rules → rules engine
-- Recommendations → ML model
-- Copy/content → CMS
-
-### 6. What NOT to Build
-What's the smallest possible artifact that still validates whether the compounding asset works?
-
-Help them ruthlessly cut:
-- Admin dashboards (use existing tools)
-- Custom auth (use a service)
-- Analytics (use off-the-shelf)
-- Features that don't test the core hypothesis
-
-## Output Format
-
-Provide a concrete starting architecture that:
 1. Names the compounding asset explicitly
-2. Lists the substrate to build first
-3. Flags cleverness traps to avoid
-4. Defines the iteration loop
-5. Lists decisions to defer
-6. Defines the MVP scope
+2. Lists substrate to build first (CI, fixtures, pipelines, DX)
+3. Flags cleverness traps for this domain
+4. Defines the minimum viable iteration loop
+5. Lists decisions to defer (config / flags / learned where appropriate)
+6. Defines MVP scope and an explicit **what not to build** list
 
-Be opinionated. Push back on complexity.
+Be opinionated. Push back on admin dashboards, custom auth, and features that do not test the compounding hypothesis — unless a hard wall or sibling skill requires them.
 
+## Action plan format (audit / new)
+
+```
+## AMPLIFY
+…
+
+## DELETE
+…
+
+## REPLACE
+…
+
+## DEFER
+…
+```
+
+Be specific (paths, symbols). Every observation needs a recommendation. Most impactful first. Concise.
+
+## Output tone
+
+Direct, not preachy. One observation paired with one suggestion for inline notes. Prefer plain prose over slogans. Do not anthropomorphize models. Do not claim a system “learns” when the real compounding asset is deterministic fixtures and proof.
+
+## Anti-patterns for the auditor
+
+- Treating every constant as debt
+- Recommending LLM judgment in place of CEM/Bend/Jev evidence walls
+- Expanding scope into DNA/scorer/recipe mutation or silent fallbacks
+- Inventing findings on a clean check
+- Packaging advice as Claude Code hooks/slash commands — this skill is the Grok Bot recipe; Claude plugin install stays in the yield-framework repos

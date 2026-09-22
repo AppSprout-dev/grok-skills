@@ -11,7 +11,7 @@ metadata:
 
 ## Purpose
 
-Stop ungated edits to agent–tool exposure. Load this skill before opening a PR that changes a Grok Bot skill, an MCP schema or manifest, or a plugin surface. The policy text is `docs/PAIRED_TAU_GATE.md` in `AppSprout-dev/grok-skills`. Copy its four fields into the PR body. This skill does not score the replay and does not write CEM DNA.
+Stop ungated edits to agent–tool exposure. Load this skill before opening a PR that changes a Grok Bot skill, an MCP schema or manifest, or a plugin surface. The policy text is `docs/PAIRED_TAU_GATE.md` in `AppSprout-dev/grok-skills`. Copy its four required fields into the PR body. `expected_effect` is optional. This skill does not score the replay and does not write CEM DNA.
 
 ## Fields (exact names)
 

@@ -27,6 +27,17 @@
       },
       "homepage": "https://github.com/AppSprout-dev/grok-skills",
       "keywords": ["grok-build", "research-platform", "multi-agent", "mcp", "greenfield"]
+    },
+    {
+      "name": "paired-tau-gate",
+      "description": "Before opening a PR that changes Grok Bot skill, MCP schema/manifest, or plugin exposure, fill level, hypothesis, dna_touch, and paired_eval_Δ. Does not edit CEM DNA.",
+      "category": "development",
+      "source": {
+        "type": "local",
+        "path": "./plugins/paired-tau-gate"
+      },
+      "homepage": "https://github.com/AppSprout-dev/grok-skills",
+      "keywords": ["grok", "mcp", "skills", "pull-request", "exposure-gate"]
     }
   ]
 }

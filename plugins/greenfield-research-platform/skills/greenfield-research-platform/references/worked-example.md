@@ -10,6 +10,7 @@ A production chemistry research platform used this layout. Copy structure and pr
 | `docs/ARCHITECTURE.md` | Layer diagram and ownership table |
 | `docs/V0.1.md` | Platform snapshot tag (harness works, not a measured result) |
 | `AGENTS.md` | Two-process split |
+| `.grok/semantic-manifest.md` | Paths only. Read on demand. No DNA or PRD body |
 | `.grok/config.toml` | Project MCP |
 | `.grok/agents/{name}-campaign.md` | Chief-of-staff host |
 | `.grok/agents/{name}-research.md` | Arm worker |

@@ -7,6 +7,8 @@ description: Run Challenge 0 cycles via project MCP on a long horizon. Use when 
 
 You are in the **research** Grok process. Tools are project MCP. **Workers** (`{name}-research` arms) do not edit the repo. **Host** (`{name}-campaign`) writes only via the wrap-docs CLI after each merge / operator wrap.
 
+Read `.grok/semantic-manifest.md` on demand for paths. Do not paste CEM DNA, PRD bodies, scorer weights, or golden recipe ids into this skill.
+
 Requires the project DSN on the MCP server and the store up (an operator job, not yours).
 
 After a `git pull` that changes the tool surface: **quit the research Grok process** and start a new `grok --agent {name}-campaign`. `grok mcp disable/enable` only writes config. `/new` keeps the old in-memory server.

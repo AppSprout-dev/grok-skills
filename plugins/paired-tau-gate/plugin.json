@@ -1,0 +1,19 @@
+{
+  "name": "paired-tau-gate",
+  "version": "1.0.0",
+  "description": "Before opening a PR that changes Grok Bot skill, MCP schema/manifest, or plugin exposure, fill the paired τ gate fields. Does not edit CEM DNA.",
+  "author": {
+    "name": "AppSprout",
+    "email": "plugin@appsprout.dev"
+  },
+  "homepage": "https://github.com/AppSprout-dev/grok-skills",
+  "repository": "https://github.com/AppSprout-dev/grok-skills",
+  "license": "MIT",
+  "keywords": [
+    "grok",
+    "mcp",
+    "skills",
+    "pull-request",
+    "exposure-gate"
+  ]
+}

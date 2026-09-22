@@ -1,5 +1,6 @@
 # Project MCP for the research Grok process.
 # Coding Grok in this repo is not the Challenge 0 generator.
+# Endpoints only. Do not inline CEM DNA, scorer weights, or golden recipe ids.
 
 [mcp_servers.{name}]
 command = "uv"

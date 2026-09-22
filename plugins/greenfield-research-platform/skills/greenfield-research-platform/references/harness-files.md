@@ -18,6 +18,12 @@ Must state, in the first screen:
 
 Do not turn AGENTS.md into the cycle skill. Policy detail belongs in `.grok/skills/{challenge}-cycle/SKILL.md`.
 
+Do not paste CEM DNA, a PRD body, scorer weights, or golden recipe ids into AGENTS.md. Point at `.grok/semantic-manifest.md` and read paths on demand.
+
+## .grok/semantic-manifest.md
+
+Copied from `assets/semantic-manifest.md.template`. Rows are paths (PRD, architecture, challenge config, DNA version pin, recipe-id registry, MCP contract, campaign store). The file does not contain those bodies. Unknown rows stay `TODO(project)`. Agents read a row when they need the path. Exposure changes to the MCP contract use the paired τ gate; the manifest does not authorize DNA writes.
+
 ## .grok/config.toml
 
 Project MCP server. Coding Grok in the repo is not the generator.

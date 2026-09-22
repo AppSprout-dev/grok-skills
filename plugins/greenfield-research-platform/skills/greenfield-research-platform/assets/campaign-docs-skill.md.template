@@ -7,6 +7,8 @@ description: After a Challenge 0 campaign wrap, update kickoff, shortlist, and s
 
 Use after each ARM REPORT merge and on operator wrap. Do **not** call `propose_batch` / `score_batch` / `store_candidates`.
 
+Read `.grok/semantic-manifest.md` on demand for paths. Do not paste CEM DNA, PRD bodies, scorer weights, or golden recipe ids into this skill.
+
 Shipped entry point:
 
 ```bash

@@ -64,6 +64,7 @@ Minimum repo surface:
 ```
 AGENTS.md
 .grok/config.toml              # project MCP server
+.grok/semantic-manifest.md     # paths only; read on demand
 .grok/agents/{name}-campaign.md
 .grok/agents/{name}-research.md
 .grok/skills/{challenge}-cycle/SKILL.md
@@ -81,6 +82,7 @@ Copy templates from `assets/` and replace `{name}` / `{challenge}`:
 - `assets/config.toml.template`
 - `assets/cycle-skill.md.template`
 - `assets/campaign-docs-skill.md.template`
+- `assets/semantic-manifest.md.template` → `.grok/semantic-manifest.md`
 
 Full file contracts live in `references/harness-files.md`.
 
@@ -138,6 +140,10 @@ Rules:
 - Do not add `run_cycle`, a Python agent, or a CLI that re-implements the outer loop.
 - `propose_batch` is a deterministic operator (seed / analogue / de-novo or domain equivalent), not the orchestrator.
 - Freeze operator lists that the science report must not invent. Novelty belongs in seeds and retrieval, not in silent string-edits to the generator.
+
+### Semantic manifest
+
+Ship `.grok/semantic-manifest.md` from `assets/semantic-manifest.md.template`. The file is paths. Agents read a row when they need it. CEM DNA, the PRD body, scorer weights, and golden recipe ids stay in the files the manifest names. They are not copied into `AGENTS.md`, agent prompts, or cycle skills. Exposure edits to the MCP surface still go through `paired-tau-gate`.
 
 ### 8. Memory is structured state
 
@@ -203,6 +209,7 @@ Keep the *roles*. Libraries change with the domain.
 - Promoting computational hits to ready-for-the-world without an empirical gate
 - Expanding to a second domain before Challenge 0 closes
 - Shadow-library literature. Inspectable primaries only
+- Pasting CEM DNA, a PRD body, scorer weights, or golden recipe ids into an agent prompt or skill
 
 ## Fresh-platform checklist
 
@@ -213,6 +220,7 @@ Use `references/standup-checklist.md` as the working list. Do not mark Challenge
 - `cem-design-process` — deterministic design-intelligence CEMs. Different product. This skill is for search/campaign systems, not recipe emitters.
 - Write a sibling project-context skill once a platform PRD is accepted.
 - `skill-creator` — how to package the per-project cycle skill and campaign-docs skill that each new platform still needs.
+- `paired-tau-gate` — fill `level`, `hypothesis`, `dna_touch`, and `paired_eval_Δ` before a PR that changes skill, MCP, or plugin exposure.
 
 ## Working rule
 

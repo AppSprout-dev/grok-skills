@@ -1,0 +1,17 @@
+# Semantic manifest (pointers only)
+
+Installed from `assets/semantic-manifest.md.template` as `.grok/semantic-manifest.md`.
+
+This file lists paths. It holds no CEM DNA, founding PRD body, scorer weights, golden recipe ids, Bend LAWS/PROOF, or Jev schemas. Read a row when the path is needed. Do not paste the target file into a prompt, a skill, a worker assignment, or a PR.
+
+| Concern | Resolve on demand | Evolution agent |
+|---|---|---|
+| Founding PRD | `docs/PRD.md` | read on demand |
+| Architecture | `docs/ARCHITECTURE.md` | read on demand |
+| Challenge config (ranges and weights stay in that file) | `config/challenges/{challenge}.toml` | read on demand |
+| DNA version pin | TODO(project): version-id path set at standup. Version id only. | no write |
+| Golden recipe id registry | TODO(project): registry path set at standup. Ids are not copied here. | no write |
+| MCP tool contract | project MCP schema / session manifest | exposure edits use the paired τ gate |
+| Campaign store | project DSN via MCP | no pasted snapshot |
+
+Unknown paths stay `TODO(project)`. Do not invent DNA, weights, or recipe ids to fill a cell.

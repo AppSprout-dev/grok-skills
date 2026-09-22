@@ -45,6 +45,7 @@ Use this list when creating a new platform or auditing an existing one. Check it
 ## Harness
 
 - [ ] `.grok/config.toml` points at the project MCP server
+- [ ] `.grok/semantic-manifest.md` is paths only (no CEM DNA, PRD body, scorer weights, or golden recipe ids pasted into agents or skills)
 - [ ] `{name}-campaign.md` host agent (write + shell only for wrap-docs)
 - [ ] `{name}-research.md` worker agent (write and shell disallowed)
 - [ ] `{challenge}-cycle` skill with Kickoff, Orchestrator, Child burst, Stop

@@ -2,6 +2,10 @@
 
 {Challenge 0 one-liner}. PRD: `docs/PRD.md`. Architecture: `docs/ARCHITECTURE.md`.
 
+## Semantic manifest (pointers only)
+
+Paths live in `.grok/semantic-manifest.md`. Read that file on demand. Do not paste CEM DNA, a founding PRD body, scorer weights, or golden recipe ids into this file.
+
 ## Two processes
 
 **This coding session** builds the repo (language stack, schema, MCP, tests). It does not generate the Challenge 0 shortlist. Do not call `propose_batch` / `score_batch` / `store_candidates` here as the product path. Tests are allowed.

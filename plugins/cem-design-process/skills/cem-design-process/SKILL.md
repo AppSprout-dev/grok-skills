@@ -100,6 +100,7 @@ Before writing any code for an issue:
 - Heavy migration of prior thin-slice code that re-introduces the same architectural compromises
 - Deferring essential foundational machinery “for later”
 - Boiling the ocean on many vehicles before the DNA exists
+- Pasting CEM DNA, scorer weights, golden recipe ids, Bend LAWS/PROOF, Jev schemas, or a founding PRD body into this skill, an agent prompt, or a PR
 
 ## When applying to an existing CEM
 
@@ -114,6 +115,11 @@ Before writing any code for an issue:
 - A companion *pattern library* skill may document Spec objects, recipe ids, golden-safe consumers, and process gates. This skill stays the process.
 - Write a separate project-context skill once a CEM’s PRD is accepted. Do not put locked repo state in this file.
 - `greenfield-research-platform` is a different product (search/campaign systems, not recipe emitters).
+- `paired-tau-gate` — fill `level`, `hypothesis`, `dna_touch`, and `paired_eval_Δ` before a PR that changes skill, MCP, or plugin exposure.
+
+## Pointers, not pasted DNA
+
+Process steps stay in this skill. CEM DNA, scorer weights, golden recipe ids, founding PRD bodies, Bend LAWS/PROOF, and Jev schemas stay in their locked project files. Name the path, or resolve it through MCP, and read it on demand. A change that writes that DNA is `dna_touch: true`: human + physics only, evolution loop off. Policy: `docs/PAIRED_TAU_GATE.md` in the grok-skills repo.
 
 ## Working rule
 

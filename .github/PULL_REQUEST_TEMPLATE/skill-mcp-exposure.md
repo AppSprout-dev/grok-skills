@@ -15,9 +15,9 @@ expected_effect: # optional short string; Petra JUMP cards require it
 - `level` is exactly one of `content`, `tool`, `schema`.
 - `hypothesis` is one short sentence.
 - `dna_touch: true` blocks bot merge (human + physics only). Bot-mergeable Tool PRs set `false`.
-- `paired_eval_Δ` is the primary Δ on `turns_to_correct_mcp_use`: parent − candidate (lower is better). A number admits only when Δ ≥ τ_harness. Default τ_harness is harness-admit only: **1.0** turn. If the primary ties (Δ = 0), the secondary wrap-docs honesty pass-fraction must improve by ≥ **0.10** (candidate − parent). These are not chemistry τ. The exact rule lives in Petra `evals/c0_harness_v/README.md` once published.
+- `paired_eval_Δ` is the primary Δ on `turns_to_correct_mcp_use`: parent − candidate (lower is better). A number admits only when Δ ≥ τ_harness. Default τ_harness is harness-admit only: **1.0** turn. If the primary ties (Δ = 0), the secondary wrap-docs honesty pass-fraction must improve by ≥ **0.10** (candidate − parent). These are not chemistry τ. The exact rule lives in Petra `evals/c0_harness_v/README.md`.
 - The exempt value is exactly `N/A (exempt: docs typo / no exposure change)` and only when exposure does not change.
-- `BLOCKED` means the fixture at `evals/c0_harness_v/` is not merged and frozen yet, or the paired run was not done. `BLOCKED` is not an admit and is not bot-mergeable.
-- `evidence` points at the parent/candidate artifact, or at the diff note for an exempt PR. For `BLOCKED`, point at the TODO path `evals/c0_harness_v/`.
+- `BLOCKED` means the paired run was not done. The fixture at `evals/c0_harness_v/` is merged and frozen (SemVer **1.0.0**, Petra merge `9a149ba3260c7c05c937f13884870f8ef9573d2f`). `BLOCKED` is not an admit and is not bot-mergeable.
+- `evidence` for a scored run points at the parent/candidate artifact for fixture SemVer **1.0.0** under `evals/c0_harness_v/` (Petra merge `9a149ba3…`). An exempt PR points at the diff note. For `BLOCKED`, point at a note that the paired run was not done.
 
 Default template with the same fields: `.github/PULL_REQUEST_TEMPLATE.md`.

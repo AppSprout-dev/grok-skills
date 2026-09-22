@@ -35,9 +35,9 @@ expected_effect: # optional; Petra JUMP cards require it
 
 Bot merge needs `level: tool` (or MCP/plugin `schema` only), `dna_touch: false`, and a resolving `evidence` pointer. Primary metric is `turns_to_correct_mcp_use`. Primary Δ = parent − candidate. τ_harness (harness-admit only) is **1.0** turn. If the primary ties (Δ = 0), wrap-docs honesty pass-fraction Δ (candidate − parent) must be ≥ **0.10**. These numbers are not chemistry τ. Do not invent a score.
 
-Frozen V, once merged on `AppSprout-dev/Petra`: `evals/c0_harness_v/` (`V.jsonl` and/or `manifest.json`, plus `README.md`). Until that undrafted PR merges, the path is TODO at that exact location. Mark the fixture frozen after merge. SemVer if tasks change. The exact rule lives in Petra `evals/c0_harness_v/README.md` once published.
+Frozen V is published on `AppSprout-dev/Petra` at `evals/c0_harness_v/` (`V.jsonl`, `manifest.json`, `README.md`), fixture SemVer **1.0.0**, Petra merge `9a149ba3260c7c05c937f13884870f8ef9573d2f`. A task change takes a SemVer bump. The exact rule lives in Petra `evals/c0_harness_v/README.md`.
 
-`BLOCKED` stays open and is not bot-mergeable while that fixture is unpublished or the run was skipped. A missing number, a broken pointer, or a miss of τ_harness is an ungated Tool edit: do not merge; append a line to `docs/gate-rejects/paired-tau.jsonl` using the schema in the policy doc.
+`BLOCKED` means the paired run was not done. It stays open and is not bot-mergeable. A missing number, a broken pointer, or a miss of τ_harness is an ungated Tool edit: do not merge; append a line to `docs/gate-rejects/paired-tau.jsonl` using the schema in the policy doc.
 
 ## Refused work
 

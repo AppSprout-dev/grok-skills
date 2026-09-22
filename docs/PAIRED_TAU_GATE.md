@@ -40,7 +40,7 @@ Optional fleet parity:
 |---|---|
 | `expected_effect` | short string. Petra JUMP cards require it. This fleet records it so a harness PR and a JUMP card name the same expected effect. It is not an admit signal. |
 
-`evidence` is the pointer that accompanies `paired_eval_Δ` (artifact path or URL). It is required for every value of `paired_eval_Δ`. A number is the primary \(\Delta\) (defined below) and admits only under \(\tau_{harness}\). The exempt string admits only when exposure is unchanged. `BLOCKED` is not an admit: the frozen fixture is not yet published, or the paired run was not done. Do not invent a score so the field parses as a pass.
+`evidence` is the pointer that accompanies `paired_eval_Δ` (artifact path or URL). It is required for every value of `paired_eval_Δ`. A number is the primary \(\Delta\) (defined below) and admits only under \(\tau_{harness}\). The exempt string admits only when exposure is unchanged. `BLOCKED` is not an admit: the paired run was not done. Do not invent a score so the field parses as a pass.
 
 ### How a PR is routed
 
@@ -51,19 +51,19 @@ Optional fleet parity:
 - `level: content` that writes CEM DNA, scorer weights, golden recipe ids, or physics constants is a hard refuse. Content evolution does not write CEM DNA.
 - `level: content` with no exposure change uses the exempt string.
 - `level: content` whose skill text changes tool exposure is an exposure change: the gate applies, and the DNA hard wall still applies.
-- A Tool or exposure Schema PR with no numeric \(\Delta\), a failed evidence pointer, or a result that misses \(\tau_{harness}\) is an ungated Tool edit. Do not bot-merge it. Log a reject when a bot tries to merge it, or when a scored candidate misses \(\tau_{harness}\). A human PR marked `BLOCKED` while the Petra fixture is still a TODO path stays unmerged and does not get a reject line until a merge is attempted.
+- A Tool or exposure Schema PR with no numeric \(\Delta\), a failed evidence pointer, or a result that misses \(\tau_{harness}\) is an ungated Tool edit. Do not bot-merge it. Log a reject when a bot tries to merge it, or when a scored candidate misses \(\tau_{harness}\). A human PR marked `BLOCKED` because the paired run was not done stays unmerged and does not get a reject line until a merge is attempted.
 
 ## Frozen \(\mathcal{V}\)
 
-Repo: `AppSprout-dev/Petra`. Exact location: `evals/c0_harness_v/`.
+Repo: `AppSprout-dev/Petra`. Exact location: `evals/c0_harness_v/`. Canonical path: `evals/c0_harness_v/V.jsonl`.
 
-Contents, once that tree is merged: `V.jsonl` and/or `manifest.json`, plus `README.md`.
+Contents: `V.jsonl`, `manifest.json`, and `README.md`.
 
-Status: TODO path. The location above is the confirmed path. The fixture is not in this repository. Until the Petra change that adds `evals/c0_harness_v/` is undrafted and merged, do not treat the directory as published, and do not reconstruct the tasks here.
+Status: **frozen** at Petra merge `9a149ba3260c7c05c937f13884870f8ef9573d2f` (Petra #23, short `9a149ba3`). Fixture SemVer **1.0.0**. The fixture is not in this repository. Do not reconstruct the tasks here.
 
-After that merge, the fixture is frozen. A task change takes a SemVer bump of the fixture. Parents and candidates in one paired run use the same frozen version.
+A task change takes a SemVer bump of the fixture. Parents and candidates in one paired run use the same frozen version.
 
-The exact scoring procedure lives in Petra `evals/c0_harness_v/README.md` once that file is published. This document records the defaults Petra confirmed for harness admit. It does not replace that README, and it does not define a chemistry τ.
+The exact scoring procedure lives in Petra `evals/c0_harness_v/README.md`. This document records the defaults Petra confirmed for harness admit. It does not replace that README, and it does not define a chemistry τ.
 
 ## Metrics and \(\tau_{harness}\)
 
@@ -86,13 +86,11 @@ Parent and candidate share \(\mathcal{V}\), the decode, and the tool-call budget
 | \(\tau_{harness}\) primary | 1.0 turn |
 | Secondary metric | wrap-docs honesty checklist pass-fraction |
 | Tie bar | honesty \(\Delta \geq 0.10\) only when primary \(\Delta = 0\) |
-| \(\mathcal{V}\) | TODO path `evals/c0_harness_v/` on `AppSprout-dev/Petra` until the undrafted PR merges |
+| \(\mathcal{V}\) | frozen `evals/c0_harness_v/` on `AppSprout-dev/Petra`, fixture SemVer **1.0.0**, Petra merge `9a149ba3260c7c05c937f13884870f8ef9573d2f` |
 
 `1.0` and `0.10` are harness-admit thresholds for this gate. They are not chemistry τ and not scorer weights.
 
-Until `evals/c0_harness_v/` is merged and frozen, an exposure-changing PR has no published V to score. Write `BLOCKED` in `paired_eval_Δ`, point `evidence` at this TODO path, and leave the PR open. `BLOCKED` is not bot-mergeable.
-
-The PR that introduces this document is `BLOCKED` because that fixture is not merged. Review may accept this documentation without a numeric \(\Delta\). That acceptance is not a precedent. Every later exposure PR stays `BLOCKED` and unmerged until the fixture is frozen and the PR shows the \(\tau_{harness}\) rule.
+`BLOCKED` means the paired run was not done. It is not an admit and is not bot-mergeable. Do not invent a score. A scored run points `evidence` at fixture SemVer **1.0.0** under `evals/c0_harness_v/` (Petra merge `9a149ba3260c7c05c937f13884870f8ef9573d2f`).
 
 ## Evidence artifact
 
@@ -102,7 +100,7 @@ An exempt PR points at the diff, or a short note, showing the change is a docs t
 
 ## Reject log
 
-Append-only log: `docs/gate-rejects/paired-tau.jsonl`. One JSON object per line. Do not delete or rewrite prior lines. The file may be empty until the first reject. A `BLOCKED` human policy PR waiting on the Petra fixture is not itself a reject row. A bot attempt to merge that PR, or any refused candidate, is a row.
+Append-only log: `docs/gate-rejects/paired-tau.jsonl`. One JSON object per line. Do not delete or rewrite prior lines. The file may be empty until the first reject. A `BLOCKED` human PR (paired run not done) is not itself a reject row. A bot attempt to merge that PR, or any refused candidate, is a row.
 
 Keys:
 
@@ -115,7 +113,7 @@ Keys:
 | `dna_touch` | bool |
 | `delta` | primary \(\Delta\) (parent − candidate on `turns_to_correct_mcp_use`), or `null` |
 | `tau` | `1.0` (\(\tau_{harness}\) primary). This is harness-admit only, not chemistry τ |
-| `v_id` | `evals/c0_harness_v/` plus fixture SemVer once frozen; until the Petra merge, `TODO:evals/c0_harness_v/` |
+| `v_id` | `evals/c0_harness_v/@1.0.0` |
 | `metric` | `turns_to_correct_mcp_use` |
 | `reason` | `missing_evidence` \| `delta_below_tau` \| `ungated_tool` \| `dna_touch` \| `hard_wall` \| `exempt_misuse` |
 | `actor` | `bot` \| `human` |
@@ -151,7 +149,7 @@ Bot merge requires every item below. Otherwise the PR stays open for a human.
 
 1. `level` is `tool`, or `schema` limited to an MCP or plugin tool schema.
 2. `dna_touch` is `false`.
-3. Frozen \(\mathcal{V}\) is the merged Petra fixture at `evals/c0_harness_v/` (same SemVer for parent and candidate).
+3. Frozen \(\mathcal{V}\) is Petra `evals/c0_harness_v/` fixture SemVer **1.0.0** at merge `9a149ba3260c7c05c937f13884870f8ef9573d2f` (same SemVer for parent and candidate).
 4. `paired_eval_Δ` is the primary \(\Delta\) (parent − candidate on `turns_to_correct_mcp_use`) and \(\Delta \geq 1.0\), or the primary ties (\(\Delta = 0\)) and honesty \(\Delta \geq 0.10\). `evidence` resolves to that parent/candidate artifact.
 5. The hard wall is clear.
 6. The reject log has no refuse row for this diff.
